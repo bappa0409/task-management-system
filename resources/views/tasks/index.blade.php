@@ -2,17 +2,18 @@
 
 @section('content')
 
-<div class="flex justify-between items-center mb-6">
+<div class="border border-gray-700 bg-gray-800 rounded-md p-6 flex justify-between items-center mb-6">
     <div>
-        <h2 class="text-2xl font-bold text-white text-2xl font-bold">Your Tasks</h2>
+        <h2 class="text-2xl font-bold text-white">Your Tasks</h2>
         <p class="text-gray-400 text-sm">Manage everything in one place</p>
     </div>
 
     <a href="{{ route('tasks.create') }}"
-       class="cursor-pointer bg-blue-500/20 hover:bg-blue-500/30 text-white px-4 py-2 rounded-md text-sm transition">
+       class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm transition">
         + Add Task
     </a>
 </div>
+
 
 @if(session('success'))
    <div class="bg-emerald-800 border border-green-400/50 shadow-md rounded-md p-4 mb-6">
