@@ -1,21 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-gray-800 border border-gray-700 rounded-md shadow-xl p-6 max-w-4xl mx-auto">
-        <div class="mb-6 flex items-center justify-between">
+    <div class="bg-gray-800 border border-gray-700 rounded-md shadow-xl p-4 sm:p-6 max-w-4xl mx-auto">
+        
+        <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-                <h2 class="text-2xl font-bold text-white">Edit Task</h2>
-                <p class="text-gray-400 text-sm mt-1">
+                <h2 class="text-xl sm:text-2xl font-bold text-white">Edit Task</h2>
+                <p class="text-gray-400 text-xs sm:text-sm mt-1">
                     Update the task details below
                 </p>
             </div>
+
             <a href="{{ route('tasks.index') }}"
-               class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm transition">
+               class="w-full sm:w-auto text-center bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm transition">
                 ← Back to Tasks
             </a>
         </div>
 
-        <form method="POST" action="{{ route('tasks.update', $task->id) }}" class="space-y-2">
+        <form method="POST" action="{{ route('tasks.update', $task->id) }}" class="space-y-4">
             @csrf
             @method('PUT')
 
@@ -28,7 +30,7 @@
                            focus:outline-none focus:border-blue-300/60 focus:ring-1 focus:ring-blue-300/20">
 
                 @error('title')
-                    <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                    <p class="text-red-400 text-xs sm:text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -40,7 +42,8 @@
                            focus:outline-none focus:border-blue-300/60 focus:ring-1 focus:ring-blue-300/20">{{ $task->description }}</textarea>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
                 <div>
                     <label class="block text-sm text-gray-300 mb-1">Status</label>
                     <select name="status"
@@ -53,8 +56,8 @@
                         <option value="completed" {{ $task->status == 'completed' ? 'selected' : '' }}>Completed</option>
                     </select>
 
-                     @error('status')
-                        <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                    @error('status')
+                        <p class="text-red-400 text-xs sm:text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -68,25 +71,25 @@
                             autocomplete="off"
                             placeholder="Select date"
                             class="w-full bg-gray-900 border border-gray-700 text-white
-                                   rounded-md px-4 py-2 pl-11
+                                   rounded-md px-4 py-2 pl-10
                                    focus:outline-none focus:border-blue-300/60 focus:ring-1 focus:ring-blue-300/20">
 
-                        <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                        <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">
                             📅
                         </div>
                     </div>
 
                     @error('due_date')
-                        <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                        <p class="text-red-400 text-xs sm:text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
 
             <div class="my-4 border-t border-gray-700"></div>
 
-            <div class="flex justify-end">
+            <div class="flex flex-col sm:flex-row sm:justify-end gap-2">
                 <button type="submit"
-                    class="cursor-pointer bg-blue-500/20 hover:bg-blue-500/30 text-white px-4 py-2 rounded-md text-sm transition">
+                    class="w-full sm:w-auto cursor-pointer bg-blue-500/20 hover:bg-blue-500/30 text-white px-4 py-2 rounded-md text-sm transition">
                     Update Task
                 </button>
             </div>
